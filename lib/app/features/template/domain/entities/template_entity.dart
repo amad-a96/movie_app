@@ -1,6 +1,20 @@
-class TemplateEntity {
-  final String template;
+import 'package:equatable/equatable.dart';
+
+class TemplateEntity extends Equatable {
+  final int? id;
+
   const TemplateEntity({
-    required this.template,
+    this.id,
   });
+
+  TemplateEntity copyWith({
+    int? id,
+  }) {
+    return TemplateEntity(
+      id: id ?? this.id,
+    );
+  }
+
+  @override
+  List<Object?> get props => [id];
 }

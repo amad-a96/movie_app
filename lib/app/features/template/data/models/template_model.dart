@@ -1,22 +1,21 @@
-import '../../../../core/constant/constants.dart';
 import '../../domain/entities/template_entity.dart';
 
 class TemplateModel extends TemplateEntity {
   const TemplateModel({
-    required String template,
+    final int? id,
   }) : super(
-          template: template,
+          id: id,
         );
 
-  factory TemplateModel.fromJson({required Map<String, dynamic> json}) {
+  factory TemplateModel.fromJson(Map<String, dynamic> json) {
     return TemplateModel(
-      template: json[kTemplate],
+      id: json['id'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      kTemplate: template,
+      'id': id,
     };
   }
 }

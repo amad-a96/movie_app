@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../business_logic/controllers/template_controller.dart';
+import '../business_logic/controllers/home_controller.dart';
 
-class TemplatePage extends GetView<TemplateController> {
-  const TemplatePage({super.key});
+class HomePage extends GetView<HomeController> {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Template'),
+        child: Text('Home'),
       ),
     );
   }

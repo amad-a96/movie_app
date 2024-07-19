@@ -1,39 +1,42 @@
 import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:movie_app/app/features/genres/domain/repositories/genres_repository.dart';
 import '../../../../core/controllers/network_checker_controller.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failure.dart';
-import '../../domain/repositories/template_repository.dart';
-import '../datasources/template_local_data_source.dart';
-import '../datasources/template_remote_data_source.dart';
-import '../models/template_model.dart';
 
-class TemplateRepositoryImpl implements TemplateRepository {
-  final TemplateRemoteDataSourceImpl remoteDataSource;
-  final TemplateLocalDataSourceImpl localDataSource;
+import '../datasources/genres_local_data_source.dart';
+import '../datasources/genres_remote_data_source.dart';
+import '../models/genres_list_model.dart';
+
+class GenresRepositoryImpl implements GenresRepository {
+  final GenresRemoteDataSourceImpl remoteDataSource;
+  final GenresLocalDataSourceImpl localDataSource;
   final networkInfo = Get.find<NetworkCheckerController>();
 
-  TemplateRepositoryImpl({
+  GenresRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
   });
 
   @override
-  Future<Either<Failure, TemplateModel>> getTemplate() async {
+  Future<Either<Failure, GenresListModel>> getGenresList() async {
     if (networkInfo.networkInfo.value == InternetConnectionStatus.connected) {
       try {
-        TemplateModel remoteTemplate = await remoteDataSource.getTemplate();
+        GenresListModel remoteGenresList =
+            await remoteDataSource.getGenresList();
 
-        localDataSource.cacheTemplate(templateToCache: remoteTemplate);
+        localDataSource.cacheGenresList(genresListToCache: remoteGenresList);
 
-        return Right(remoteTemplate);
+        return Right(remoteGenresList);
       } on ServerException {
         return Left(ServerFailure(errorMessage: 'This is a server exception'));
       }
     } else {
       try {
-        TemplateModel localTemplate = await localDataSource.getLastTemplate();
+        GenresListModel localTemplate =
+            await localDataSource.getLastGenresList();
         return Right(localTemplate);
       } on CacheException {
         return Left(CacheFailure(errorMessage: 'This is a cache exception'));
