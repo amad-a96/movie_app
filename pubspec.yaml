@@ -10,6 +10,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  get: ^4.6.6
+  get_storage: ^2.1.1
+  internet_connection_checker_plus: ^1.0.1
+  dartz: ^0.10.1
+  equatable: ^2.0.5
+  cached_network_image: ^3.3.1
+  octo_image: ^2.0.0
+  lottie: ^2.4.0
+  auto_size_text: ^3.0.0
+  timeago: ^3.4.0
+  dio: ^5.5.0+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
