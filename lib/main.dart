@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'app/core/services/storage_services.dart';
+import 'app/features/root_app.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+       statusBarBrightness: Brightness.light,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,));
+
+  await initialService();
+  runApp(
+    // DevicePreview(
+    //   builder: (context) =>
+    RootApp(),
+    // ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+initialService() async {
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  await Get.putAsync(() => StorageService().init());
 }
