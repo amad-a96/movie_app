@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../../../core/functions/check_remote_fetch.dart';
 import '../../../../../core/helpers/custom_snackbar/custom_snackbar.dart';
 import '../../../domain/entities/result_page_entity.dart';
 import '../../../domain/usecases/get_movies_uc.dart';
@@ -10,8 +11,9 @@ class MoviesController extends GetxController {
     required this.getMoviesUseCase,
   });
   final resultPageEntity = const ResultPageEntity().obs;
+  bool isRemoteFetched = false;
 
-  getMovies({required int pageNumber}) async {
+  Future<(ResultPageEntity, bool)> getMovies({required int pageNumber}) async {
     await Future.sync(
       () async {
         final result = await getMoviesUseCase.call(pageNumber: pageNumber);
@@ -20,12 +22,14 @@ class MoviesController extends GetxController {
             CustomSnackBar.showCustomErrorSnackBar(message: failure.toString());
           },
           (data) {
-            return resultPageEntity.value = data;
+            isRemoteFetched =
+                checkRemoteFetch(isRemoteFetched: isRemoteFetched);
+            resultPageEntity.value = data;
           },
         );
       },
     );
 
-    return resultPageEntity.value;
+    return (resultPageEntity.value, isRemoteFetched);
   }
 }

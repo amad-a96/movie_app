@@ -43,28 +43,4 @@ class GenresRepositoryImpl implements GenresRepository {
       }
     }
   }
-
-  // @override
-  // Future<Either<Failure, TemplateModel>> getTemplate(
-  //     {required TemplateParams templateParams}) async {
-  //   if (networkInfo.networkInfo.value == InternetConnectionStatus.connected) {
-  //     try {
-  //       TemplateModel remoteTemplate =
-  //           await remoteDataSource.getTemplate(templateParams: templateParams);
-
-  //       localDataSource.cacheTemplate(templateToCache: remoteTemplate);
-
-  //       return Right(remoteTemplate);
-  //     } on ServerException {
-  //       return Left(ServerFailure(errorMessage: 'This is a server exception'));
-  //     }
-  //   } else {
-  //     try {
-  //       TemplateModel localTemplate = await localDataSource.getLastTemplate();
-  //       return Right(localTemplate);
-  //     } on CacheException {
-  //       return Left(CacheFailure(errorMessage: 'This is a cache exception'));
-  //     }
-  //   }
-  // }
 }
