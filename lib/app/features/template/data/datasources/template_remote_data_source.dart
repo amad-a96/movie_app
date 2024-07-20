@@ -11,7 +11,6 @@ class TemplateRemoteDataSourceImpl implements TemplateRemoteDataSource {
   final DioService dioService;
   TemplateRemoteDataSourceImpl({required this.dioService});
 
-  // Genres List
   @override
   Future<TemplateModel> getTemplate() async {
     final response = await dioService.getRequest('', headers: Api.headers);

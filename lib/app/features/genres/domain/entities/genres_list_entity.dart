@@ -5,7 +5,7 @@ class GenresListEntity extends Equatable {
   final List<GenreEntity>? genres;
 
   const GenresListEntity({
-    required this.genres,
+    this.genres,
   });
 
   GenresListEntity copyWith({

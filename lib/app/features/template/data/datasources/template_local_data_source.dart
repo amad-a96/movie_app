@@ -15,7 +15,6 @@ class TemplateLocalDataSourceImpl implements TemplateLocalDataSource {
 
   TemplateLocalDataSourceImpl({required this.storageService});
 
-  // Genres List
   @override
   Future<TemplateModel> getLastTemplate() {
     final jsonString = storageService.read(cachedTemplate);

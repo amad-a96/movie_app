@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
-class TemplateBinding implements Bindings {
+class HomeBinding implements Bindings {
   @override
   void dependencies() {
     //controllers

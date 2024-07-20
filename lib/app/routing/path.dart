@@ -4,4 +4,7 @@ class Paths {
 
   //splash
   static const String splash = '/';
+
+  //home
+  static const String home = '/home';
 }
