@@ -22,4 +22,18 @@ class GenreModel extends GenreEntity {
       'name': name,
     };
   }
+
+  factory GenreModel.fromEntity(GenreEntity entity) {
+    return GenreModel(
+      id: entity.id,
+      name: entity.name,
+    );
+  }
+
+  GenreEntity toEntity() {
+    return GenreEntity(
+      id: id,
+      name: name,
+    );
+  }
 }

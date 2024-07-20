@@ -7,4 +7,7 @@ class Paths {
 
   //home
   static const String home = '/home';
+
+  //movie
+  static const String movieDetails = '/movie-details';
 }

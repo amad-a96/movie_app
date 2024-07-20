@@ -111,29 +111,4 @@ class MovieModel extends MovieEntity {
       voteCount: entity.voteCount,
     );
   }
-
-  // static List<MovieModel> fromJsonList(List<dynamic> jsonList) {
-  //   if (jsonList is List) {
-  //     return jsonList.map((json) => MovieModel.fromJson(json as Map<String, dynamic>)).toList();
-  //   } else {
-  //     throw ArgumentError('Invalid JSON list');
-  //   }
-  // }
-
-  // // // Convert list of JSON objects to list of MovieModel
-  // // static List<MovieModel> fromJsonList(List<dynamic> jsonList) {
-  // //   return jsonList
-  // //       .map((json) => MovieModel.fromJson(json as Map<String, dynamic>))
-  // //       .toList();
-  // // }
-
-  // // Convert list of MovieModel to list of JSON objects
-  // static List<Map<String, dynamic>> toJsonList(List<MovieModel> models) {
-  //   return models.map((model) => model.toJson()).toList();
-  // }
-  // // static List<MovieModel> fromJsonList(String jsonString) {
-  // //   final data = json.decode(jsonString) as Map<String, dynamic>;
-  // //   final results = data['results'] as List<dynamic>;
-  // //   return results.map((json) => MovieModel.fromJson(json)).toList();
-  // // }
 }

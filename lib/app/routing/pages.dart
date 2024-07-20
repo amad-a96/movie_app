@@ -1,7 +1,9 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:movie_app/app/features/genres/presentation/business_logic/bindings/genres_di.dart';
 import 'package:movie_app/app/features/home/presentation/pages/home_page.dart';
+import 'package:movie_app/app/features/movies/presentation/business_logic/bindings/movie_details_di.dart';
 import 'package:movie_app/app/features/movies/presentation/business_logic/bindings/movies_di.dart';
+import 'package:movie_app/app/features/movies/presentation/pages/movie_details_page.dart';
 import 'package:movie_app/app/features/splash/presentation/business_logic/bindings/splash_di.dart';
 import '../features/home/presentation/business_logic/bindings/home_di.dart';
 import '../features/splash/presentation/page/splash_page.dart';
@@ -32,6 +34,13 @@ class Pages {
         GenresBinding(),
         MoviesBinding(),
       ],
+    ),
+
+    //movie
+    GetPage(
+      name: Paths.movieDetails,
+      page: () => const MovieDeTailsPage(),
+      binding: MovieDetailsBinding(),
     ),
   ];
 }
