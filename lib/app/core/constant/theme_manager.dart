@@ -201,7 +201,7 @@ class ThemeManager {
       ),
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
-        statusBarColor: Colors.black,
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.light,
       ),
       centerTitle: true,

@@ -25,6 +25,7 @@ dependencies:
   money_formatter: ^0.0.4
   loading_animation_widget: ^1.2.0+4
   animated_text_kit: ^4.2.2
+  firebase_core: ^2.30.0
 
 dev_dependencies:
   flutter_test:
