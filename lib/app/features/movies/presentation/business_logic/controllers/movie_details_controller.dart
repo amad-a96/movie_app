@@ -22,7 +22,6 @@ class MovieDetailsController extends GetxController {
           },
           (data) {
             movieDetailsEntity.value = data;
-            print(data);
           },
         );
       },

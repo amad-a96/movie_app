@@ -24,7 +24,7 @@ class ImageContainerWidget extends StatelessWidget {
       child: OctoImage(
         image: CachedNetworkImageProvider(imgUrl),
         errorBuilder: (context, error, stackTrace) {
-          return Text('error loading');
+          return const Icon(Icons.error);
         },
         fit: fit,
         height: height,
