@@ -16,8 +16,8 @@ This is a mobile application built with Flutter that showcases trending movies. 
 
 This project follows Clean Architecture principles, which include:
 
-- **Presentation Layer:** Handles UI and user interactions.
-- **Domain Layer:** Contains business logic and use cases.
+- **Presentation Layer:** Handles UI and user interactions and business logic.
+- **Domain Layer:** Contains use cases.
 - **Data Layer:** Manages data sources and repositories.
 
 ## State Management
