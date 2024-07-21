@@ -10,4 +10,7 @@ class Paths {
 
   //movie
   static const String movieDetails = '/movie-details';
+
+  //search
+  static const String search = '/search';
 }

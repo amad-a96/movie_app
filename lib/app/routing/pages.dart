@@ -6,6 +6,8 @@ import 'package:movie_app/app/features/movies/presentation/business_logic/bindin
 import 'package:movie_app/app/features/movies/presentation/pages/movie_details_page.dart';
 import 'package:movie_app/app/features/splash/presentation/business_logic/bindings/splash_di.dart';
 import '../features/home/presentation/business_logic/bindings/home_di.dart';
+import '../features/search/presentation/business_logic/bindings/search_di.dart';
+import '../features/search/presentation/pages/search_page.dart';
 import '../features/splash/presentation/page/splash_page.dart';
 import 'not_found_screen.dart';
 import 'path.dart';
@@ -41,6 +43,13 @@ class Pages {
       name: Paths.movieDetails,
       page: () => const MovieDeTailsPage(),
       binding: MovieDetailsBinding(),
+    ),
+
+    //search
+    GetPage(
+      name: Paths.search,
+      page: () => const SearchMoviesPage(),
+      binding: SearchMoviesBinding(),
     ),
   ];
 }

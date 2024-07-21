@@ -14,7 +14,7 @@ class ColorManager {
   // static Color primary = HexColor.fromHex('#28104E');
 
   // static Color primary = HexColor.fromHex('#3c006c');
-  static Color primary = HexColor.fromHex('#4f006c');
+  static Color primary = HexColor.fromHex("#01a3a4");
   // static Color primary = HexColor.fromHex('#36174D');
 
   static Color black = HexColor.fromHex("#222222");
