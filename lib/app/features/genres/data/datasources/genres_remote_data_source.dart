@@ -1,6 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:movie_app/app/core/services/dio_services.dart';
 import '../../../../core/constant/api/api.dart';
-import '../../../../core/errors/exceptions.dart';
 import '../models/genres_list_model.dart';
 
 abstract class GenresRemoteDataSource {
@@ -14,13 +14,17 @@ class GenresRemoteDataSourceImpl implements GenresRemoteDataSource {
   // Genres List
   @override
   Future<GenresListModel> getGenresList() async {
-    final response = await dioService.getRequest(Api.baseApi + Api.getGenresList,
-        headers: Api.headers);
+    try {
+      final response = await dioService
+          .getRequest(Api.baseApi + Api.getGenresList, headers: Api.headers);
 
-    if (response.statusCode == 200) {
-      return GenresListModel.fromJson(response.data);
-    } else {
-      throw ServerException();
+      if (response.statusCode == 200) {
+        return GenresListModel.fromJson(response.data);
+      } else {
+        throw DioException(requestOptions: RequestOptions());
+      }
+    } catch (e) {
+      throw DioException(requestOptions: RequestOptions());
     }
   }
 }

@@ -18,7 +18,7 @@ class TemplateController extends GetxController {
     final result = await getTemplateUseCase.call();
     result.fold(
       (failure) {
-        CustomSnackBar.showCustomErrorSnackBar(message: failure.toString());
+        CustomSnackBar.showCustomErrorSnackBar(message: failure.errorMessage);
       },
       (data) {
         print(data);

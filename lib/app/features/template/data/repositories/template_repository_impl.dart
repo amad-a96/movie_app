@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import '../../../../core/controllers/network_checker_controller.dart';
@@ -29,7 +30,9 @@ class TemplateRepositoryImpl implements TemplateRepository {
 
         return Right(remoteTemplate);
       } on ServerException {
-        return Left(ServerFailure(errorMessage: 'This is a server exception'));
+        return Left(ServerFailure(errorMessage: 'Failed to get template, try again'));
+      } on DioException {
+        return Left(ServerFailure(errorMessage: 'Failed to get template, try again'));
       }
     } else {
       try {

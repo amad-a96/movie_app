@@ -19,7 +19,7 @@ class MoviesController extends GetxController {
         final result = await getMoviesUseCase.call(pageNumber: pageNumber);
         result.fold(
           (failure) {
-            CustomSnackBar.showCustomErrorSnackBar(message: failure.toString());
+            CustomSnackBar.showCustomErrorSnackBar(message: failure.errorMessage);
           },
           (data) {
             isRemoteFetched =

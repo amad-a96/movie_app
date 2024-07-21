@@ -11,7 +11,7 @@ class SplashController extends GetxController {
     once(
       NetworkCheckerController.to.networkInfo,
       (networkInfo) async {
-        Get.toNamed(Paths.home);
+        Get.offAndToNamed(Paths.home);
       },
     );
   }

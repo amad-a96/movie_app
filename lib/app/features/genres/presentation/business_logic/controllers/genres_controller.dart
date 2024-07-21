@@ -18,7 +18,7 @@ class GenresController extends GetxController {
     final result = await getGenresListUseCase.call();
     result.fold(
       (failure) {
-        CustomSnackBar.showCustomErrorSnackBar(message: failure.toString());
+        CustomSnackBar.showCustomErrorSnackBar(message: failure.errorMessage);
       },
       (data) {
         isRemoteFetched = checkRemoteFetch(isRemoteFetched: isRemoteFetched);

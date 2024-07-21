@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import '../../../../core/controllers/network_checker_controller.dart';
@@ -32,7 +33,9 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
         return Right(remoteMovies);
       } on ServerException {
-        return Left(ServerFailure(errorMessage: 'This is a server exception'));
+        return Left(ServerFailure(errorMessage: 'Failed to get movies, try again'));
+      } on DioException {
+        return Left(ServerFailure(errorMessage: 'Failed to get movies, try again'));
       }
     } else {
       try {
@@ -54,7 +57,9 @@ class MoviesRepositoryImpl implements MoviesRepository {
 
         return Right(remoteMovieDetails);
       } on ServerException {
-        return Left(ServerFailure(errorMessage: 'This is a server exception'));
+        return Left(ServerFailure(errorMessage: 'Failed to get movie details, try again'));
+      } on DioException {
+        return Left(ServerFailure(errorMessage: 'Failed to get movie details, try again'));
       }
     } else {
       return Left(NetworkFailure(

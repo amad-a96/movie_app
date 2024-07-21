@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:movie_app/app/features/genres/domain/repositories/genres_repository.dart';
@@ -31,7 +32,11 @@ class GenresRepositoryImpl implements GenresRepository {
 
         return Right(remoteGenresList);
       } on ServerException {
-        return Left(ServerFailure(errorMessage: 'This is a server exception'));
+        return Left(
+            ServerFailure(errorMessage: 'Failed to get genres, try again'));
+      } on DioException {
+        return Left(
+            ServerFailure(errorMessage: 'Failed to get genres, try again'));
       }
     } else {
       try {

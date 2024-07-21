@@ -17,7 +17,7 @@ class MovieDetailsController extends GetxController {
         final result = await getMovieDetailsUseCase.call(movieId: movieId);
         result.fold(
           (failure) {
-            CustomSnackBar.showCustomErrorSnackBar(message: failure.toString());
+            CustomSnackBar.showCustomErrorSnackBar(message: failure.errorMessage);
           },
           (data) {
             movieDetailsEntity.value = data;
