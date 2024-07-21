@@ -7,9 +7,9 @@ import 'app/features/root_app.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-    statusBarBrightness: Brightness.light,
-    statusBarColor: Colors.white,
-    statusBarIconBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.dark,
+    statusBarColor: Colors.black,
+    statusBarIconBrightness: Brightness.light,
   ));
 
   await initialService();

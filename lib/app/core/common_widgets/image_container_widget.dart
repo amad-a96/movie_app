@@ -20,9 +20,12 @@ class ImageContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(90),
+      borderRadius: BorderRadius.circular(5),
       child: OctoImage(
         image: CachedNetworkImageProvider(imgUrl),
+        errorBuilder: (context, error, stackTrace) {
+          return Text('error loading');
+        },
         fit: fit,
         height: height,
         width: width,

@@ -31,7 +31,7 @@ class RootApp extends StatelessWidget {
         locale: languageController.language ?? Locale(_config.english),
         fallbackLocale: Locale(_config.english),
         translations: TranslationManager(),
-        theme: ThemeManager.themeLightEng,
+        theme: ThemeManager.themeDarkEng,
         debugShowCheckedModeBanner: false,
         initialBinding: InitialBindings(),
         initialRoute: Paths.splash,

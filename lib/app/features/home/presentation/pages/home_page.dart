@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import '../../../../core/common_widgets/image_container_widget.dart';
-import '../../../../core/constant/api/api.dart';
-import '../../../../routing/path.dart';
+import 'package:movie_app/app/core/constant/color_manager.dart';
+import '../../../../core/common_widgets/custom_background.dart';
+import '../../../../core/common_widgets/custom_text_form_field.dart';
 import '../../../movies/domain/entities/movie_entity.dart';
 import '../business_logic/controllers/home_controller.dart';
+import '../widgets/movie_card_widget.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -13,27 +14,38 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PagedListView<int, MovieEntity>(
-        pagingController: HomeController.to.pagingController,
-        builderDelegate: PagedChildBuilderDelegate<MovieEntity>(
-            itemBuilder: (context, movie, index) => InkWell(
-                  onTap: () {
-                    Get.toNamed(Paths.movieDetails, arguments: movie.id);
-                  },
-                  child: Row(
-                    children: [
-                      ImageContainerWidget(
-                          width: 70,
-                          height: 70,
-                          imgUrl: '${Api.imagePath}${movie.backdropPath}'),
-                      const SizedBox(width: 10),
-                      Text(
-                        movie.title ?? '',
-                        style: Get.textTheme.bodyLarge,
-                      )
-                    ],
+      extendBody: true,
+      body: CustomBackground(
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomFormField(
+                    readOnly: true,
+                    onTap: () {},
+                    hintText: 'Search here...',
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: ColorManager.green.withOpacity(0.8),
+                    ),
                   ),
-                )),
+                ),
+              ],
+            ),
+            Expanded(
+              child: PagedListView<int, MovieEntity>(
+                physics: const BouncingScrollPhysics(),
+                pagingController: HomeController.to.pagingController,
+                builderDelegate: PagedChildBuilderDelegate<MovieEntity>(
+                    itemBuilder: (context, movie, index) => MovieCardWidget(
+                          movie: movie,
+                        )),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
